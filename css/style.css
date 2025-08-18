@@ -71,7 +71,7 @@
 	font-size:1.125rem;     				/* 18px */
     font-weight:400;
 	line-height:1.6;
-	background-image: url('images/AWSLLMLeagueBackgroundArt_16x9.png')
+	background-image: url('../images/AWSLLMLeagueBackgroundArt_16x9.jpg')
 }
 
 /* Typography
@@ -191,7 +191,7 @@ a:hover {
 	display:inline-flex;
 	align-items:center;
 	justify-content:center;
-	width:18.75rem;             	/* 300px */
+	width:80%;             	
  	min-height:3rem;                /* 48px */
   	padding:0.75rem 1rem;         	/* 12px ; 16px */
   	font-size:1.125rem;           	/* 18px */
@@ -344,6 +344,9 @@ ul li {
 	}
 	section {
 	margin:var(--spacing-l) 0;
+	}
+	.button,button {
+		width:18.75rem;             	/* 300px */
 	}
 }
 
