@@ -96,14 +96,8 @@
               <a class="button button-default" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-website.svg" alt="Website Icon">Leaderboard Credentials</a>
 
               <!-- YouTube - Finale Demo  -->
-              <a id="play-video" class="button button-yt" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/youtube.svg" alt="YouTube Logo">Finale Demo</a>
-              
-              <video id="play-video" controls style="display: none;">
-                <source src="https://d1kl60kt3ayrp1.cloudfront.net/AWSAILeagueFinalGameshowDemo-1080P_e28b374d-6e20-4c80-b1c5-dbaa7c0a01fc.mp4?Expires=1755958682&Signature=Hxm~XOKJqcyn0ye3TSuqWgqVsaFumoNuAbEtymYnn56PlQvrnWhr6ORfdPTAlZxvsMuhZBBi0xFs3vhjLvpAhfcJxZAoFR3Y4IVo7V-uPpgQ0X3F61g9ECW1uI9ZrBlMLe1F0ZEHaC-usDxkAPuU1Gr9blkEGBtdSq7R4hzYLIZQ2wvRPz5a3N1wa54LVFhw58HkRPpwN1OSNMIn~O9NXBuoeRzQJhxWELMARCxI8NCLFaJ8bi3Hmjmf5NoBhZIfaiMVgDVTnUzNYnxWzn9LubopdIauCdIoAlX-~IlFeFTx6PubQSTqjRVjEqnyoG~IzSNydoxTFuYESBVjkYTKzw__&Key-Pair-Id=KWRTX9P0EE8Y2" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-
-              
+              <a class="button button-yt vidLink" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/youtube.svg" alt="YouTube Logo">Finale Demo</a>
+                           
               <!-- Generic Blog - Presentation Deck -->
               <a class="button button-default" href="https://d1kl60kt3ayrp1.cloudfront.net/AWSAILeagueWorkshop-Toronto_93888747-51dc-4c0f-9d9d-513cccb7dea2.pdf?Expires=1755959182&Signature=JnQcST850fT27C1iGh-JHgPd4Lh8f4sodB5-KGSsUp0hARtZVhpm6WTO57Q9VzhCOvtlRxle5YyZJmr8MdT3GF5SI9H50L0XDiAedp8CA-39cQxaHwJPCsiJeCSOsjEfgNyPduimweCiDV-GDeG0EcF~EEeGxPzuZPAllbjy~dh3L7k-uRhKrzM0JQgOEHIfMDDCnTZ7OppOh5v0t~y6R7pFcbAvgk-Iu2MfgKe8JVXjOuPJzkEik9HtrVoj2QrybmZHeZqxYsCQNP890qFCR-v5~ZJY~5lJ-DVi4vnm5KJtWmUE8OyBqAt5JCwdLbuKkZLz5bmbdai72c60InuRwA__&Key-Pair-Id=KWRTX9P0EE8Y2" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-blog.svg" alt="Blog Icon">Presentation Deck</a>        
 
@@ -117,7 +111,59 @@
       --> 
     </div>
   </div>
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <video id="videoPlayer" width="100%" height="100%" controls>
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
 
+  
 </body>
+  <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+	
+    // Get the video player
+    var videoPlayer = document.getElementById("videoPlayer")
 
+    // Get all the links that open the modal
+    var links = document.getElementsByClassName("vidLink");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // Add click event listener to the links
+    for (var i = 0; i < links.length; i++) {
+      links[i].onclick = function() {
+        // Get the video URL from the data-video-url attribute
+        var videoUrl = this.getAttribute("data-video-url");
+
+        // Set the video source
+        videoPlayer.src = videoUrl;
+        videoPlayer.load();	
+        videoPlayer.play();
+
+        // Show the modal
+        modal.style.display = "block";
+      }
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+  
 </html>
