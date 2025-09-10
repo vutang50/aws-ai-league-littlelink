@@ -7,7 +7,7 @@
   - theme-dark: Forces dark theme
 -->
 
-<html class="theme-auto" lang="en"> <!-- Update`class="theme-auto" with your preference -->
+<html class="theme-dark" lang="en"> <!-- Update`class="theme-auto" with your preference -->
 
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
 
               Be sure to replace the src with your own image path and update the alt text
             -->
-            <img class="avatar avatar--rounded" src="images/aws-logo.webp" srcset="images/aws-logo.webp" alt="AWS AI League">
+            <img class="avatar avatar--rounded" src="images/aws-logo-white.png" srcset="images/aws-logo-white.png" alt="AWS AI League">
 
             <!-- Replace with your name or brand -->
             <h1>
@@ -81,13 +81,13 @@
               <a class="button button-default" href="https://static.us-east-1.prod.workshops.aws/public/030186ac-3bef-4285-b20c-ecc6071d10d8/static/login1.png" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-blog.svg" alt="Blog Icon">Sagemaker Studio Login Credentials</a>
               
               <!-- Generic Code - Sample Training Dataset -->
-              <a class="button button-default" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-code.svg" alt="Code Icon">Sample Training Dataset</a>
+              <a class="button button-default" href="https://d2qrbbbqnxtln.cloudfront.net/aws-tnt-summit-ai-league-2025/dataset/train.jsonl" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-code.svg" alt="Code Icon">Sample Training Dataset</a>
 
               <!-- Generic Code - Additional Training Dataset -->
               <a class="button button-default" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-code.svg" alt="Code Icon">Additional Training Dataset</a>
 
               <!-- Generic Review - Dataset Generator -->
-              <a class="button button-default" href="https://tinyurl.com/data-generate" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-review.svg" alt="Review Icon">Dataset Generator - PartyRock</a>
+              <a class="button button-default" href="https://tinyurl.com/ai-league-dataset/" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-review.svg" alt="Review Icon">Dataset Generator - PartyRock</a>
 
               <!-- Generic Website - Leaderboard Site -->
               <a class="button button-default" href="https://d1lojwke7j5vfp.cloudfront.net/" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-website.svg" alt="Website Icon">AWS AI League Leaderboard</a>
@@ -99,7 +99,7 @@
               <a class="button button-yt" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/youtube.svg" alt="YouTube Logo">Workshop Recording</a>
 
               <!-- YouTube - Finale Demo  -->
-              <a class="button button-yt" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/youtube.svg" alt="YouTube Logo">Finale Demo</a>
+              <a class="button button-yt vidLink" href="#" data-video-url="https://d2qrbbbqnxtln.cloudfront.net/assets/videos/AWS AI League Final Gameshow Demo - 1080P.mp4" role="button"><img class="icon" aria-hidden="true" src="images/icons/youtube.svg" alt="YouTube Logo">Finale Demo</a>
 
               <!-- Generic Blog - Presentation Deck -->
               <a class="button button-default" href="#" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-blog.svg" alt="Blog Icon">Presentation Deck</a>        
@@ -114,7 +114,59 @@
       --> 
     </div>
   </div>
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <video id="videoPlayer" width="100%" height="100%" controls>
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
 
 </body>
+  <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+	
+    // Get the video player
+    var videoPlayer = document.getElementById("videoPlayer")
+
+    // Get all the links that open the modal
+    var links = document.getElementsByClassName("vidLink");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // Add click event listener to the links
+    for (var i = 0; i < links.length; i++) {
+      links[i].onclick = function() {
+        // Get the video URL from the data-video-url attribute
+        var videoUrl = this.getAttribute("data-video-url");
+
+        // Set the video source
+        videoPlayer.src = videoUrl;
+        videoPlayer.load();	
+        videoPlayer.play();
+
+        // Show the modal
+        modal.style.display = "block";
+      }
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 
 </html>
